@@ -23,6 +23,11 @@
   padding: 20px;
 }
 
+.header-container {
+  flex-direction: row;
+  justify-content: space-between;
+}
+
 .App-link {
   color: #61dafb;
 }

@@ -9,6 +9,8 @@ import Button from '@material-ui/core/Button';
 import { GlobalContext } from './components/globalContext';
 import UserTypedMessage from './util/UserTypedMessage';
 import ResultView from './components/ResultView';
+import IconButton from '@material-ui/core/IconButton';
+import DeleteIcon from '@mui/icons-material/Delete';
 
 export default function App() {
   const [userMessage, setUserMessage] = useState(''); // [state, setState
@@ -21,7 +23,7 @@ export default function App() {
     <div className={classes.root}>
       {/* other components */}
       <header className="App-header">
-        <Container maxWidth="sm">
+        <Container maxWidth="sm" className="header-container">
           <Typography variant="body1">AI Call Center Demo</Typography>
           <Button 
             variant="contained" 
@@ -30,6 +32,16 @@ export default function App() {
             >
             { showResult ? "Result" : "Transcript" }
           </Button>
+          <IconButton 
+            aria-label="delete" 
+            color="primary" 
+            onClick={() => {
+              dispatch({type: 'reset'});
+              setUserMessage('');
+              setTranscript([]);
+            }}>
+            <DeleteIcon />
+          </IconButton>
         </Container>
       </header>
       <div className={classes.display}>
